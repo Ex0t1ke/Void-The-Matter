@@ -1,3 +1,4 @@
+class_name AudioManager
 extends Node
 ## Архитектура звука игры Risk of Void.
 ## Синглтон с пулом 3D и 2D плееров и безопасным воспроизведением (Graceful Fallback).

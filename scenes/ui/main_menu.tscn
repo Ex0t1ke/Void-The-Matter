@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://bckalynqfcp6l" path="res://scripts/ui/main_menu.gd" id="1_menu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="SkyMat_menu"]
-sky_top_color = Color(0.12, 0.16, 0.32, 1)
-sky_horizon_color = Color(0.45, 0.25, 0.42, 1)
-ground_bottom_color = Color(0.06, 0.04, 0.09, 1)
-ground_horizon_color = Color(0.35, 0.2, 0.32, 1)
+sky_top_color = Color(0.07, 0.06, 0.16, 1)
+sky_horizon_color = Color(0.28, 0.13, 0.36, 1)
+ground_bottom_color = Color(0.02, 0.02, 0.05, 1)
+ground_horizon_color = Color(0.16, 0.09, 0.24, 1)
 
 [sub_resource type="Sky" id="Sky_menu"]
 sky_material = SubResource("SkyMat_menu")
@@ -15,115 +15,160 @@ sky_material = SubResource("SkyMat_menu")
 background_mode = 2
 sky = SubResource("Sky_menu")
 ambient_light_source = 3
-ambient_light_energy = 0.65
+ambient_light_color = Color(0.22, 0.25, 0.42, 1)
+ambient_light_energy = 0.75
+tonemap_mode = 3
 glow_enabled = true
-glow_intensity = 0.6
-glow_bloom = 0.15
+glow_intensity = 0.85
+glow_bloom = 0.2
+
+[sub_resource type="Gradient" id="Gradient_backdrop"]
+offsets = PackedFloat32Array(0, 0.42, 0.75, 1)
+colors = PackedColorArray(0.03, 0.025, 0.06, 0.94, 0.03, 0.025, 0.06, 0.88, 0.03, 0.025, 0.06, 0.35, 0.03, 0.025, 0.06, 0.05)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_backdrop"]
+gradient = SubResource("Gradient_backdrop")
+width = 1920
+height = 1080
+fill_to = Vector2(1, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn"]
-content_margin_left = 24.0
-content_margin_top = 12.0
+content_margin_left = 26.0
+content_margin_top = 14.0
 content_margin_right = 24.0
-content_margin_bottom = 12.0
-bg_color = Color(0.12, 0.11, 0.19, 0.9)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.28, 0.32, 0.48, 0.8)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_p"]
-content_margin_left = 24.0
-content_margin_top = 12.0
-content_margin_right = 24.0
-content_margin_bottom = 12.0
-bg_color = Color(0.15, 0.12, 0.28, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 0.9, 1, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
+content_margin_bottom = 14.0
+bg_color = Color(0.07, 0.06, 0.13, 0.85)
+border_width_left = 4
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.24, 0.3, 0.46, 0.6)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+shadow_color = Color(0, 0, 0, 0.25)
+shadow_size = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_h"]
-content_margin_left = 24.0
-content_margin_top = 12.0
+content_margin_left = 28.0
+content_margin_top = 14.0
 content_margin_right = 24.0
-content_margin_bottom = 12.0
-bg_color = Color(0.22, 0.2, 0.38, 0.95)
-border_width_left = 2
+content_margin_bottom = 14.0
+bg_color = Color(0.12, 0.14, 0.26, 0.95)
+border_width_left = 6
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(1, 0.72, 0.22, 1)
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
+border_color = Color(0, 0.94, 1, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+shadow_color = Color(0, 0.85, 1, 0.25)
+shadow_size = 12
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_modal"]
-bg_color = Color(0.07, 0.06, 0.11, 0.96)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btn_p"]
+content_margin_left = 28.0
+content_margin_top = 14.0
+content_margin_right = 24.0
+content_margin_bottom = 14.0
+bg_color = Color(0.04, 0.35, 0.48, 0.95)
+border_width_left = 6
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.85, 0.25, 1)
+corner_radius_top_left = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glass_modal"]
+bg_color = Color(0.05, 0.04, 0.1, 0.9)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
-border_color = Color(0, 0.85, 1, 0.9)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-shadow_size = 18
+border_color = Color(0, 0.9, 1, 0.7)
+corner_radius_top_left = 14
+corner_radius_bottom_right = 14
+shadow_color = Color(0, 0.3, 0.5, 0.3)
+shadow_size = 36
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glass_modal_amber"]
+bg_color = Color(0.05, 0.04, 0.1, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.75, 0.25, 0.75)
+corner_radius_top_left = 14
+corner_radius_bottom_right = 14
+shadow_color = Color(0.5, 0.3, 0, 0.25)
+shadow_size = 36
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glass_modal_purple"]
+bg_color = Color(0.05, 0.04, 0.1, 0.9)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.7, 0.4, 1, 0.75)
+corner_radius_top_left = 14
+corner_radius_bottom_right = 14
+shadow_color = Color(0.4, 0.15, 0.6, 0.25)
+shadow_size = 36
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_card"]
 content_margin_left = 18.0
 content_margin_top = 16.0
 content_margin_right = 18.0
 content_margin_bottom = 16.0
-bg_color = Color(0.09, 0.08, 0.14, 0.94)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.25, 0.3, 0.45, 0.8)
+bg_color = Color(0.08, 0.07, 0.15, 0.8)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.24, 0.3, 0.45, 0.65)
 corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_settings_modal"]
-bg_color = Color(0.07, 0.06, 0.11, 0.96)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 0.75, 0.25, 0.9)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-shadow_size = 18
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_close_btn"]
+bg_color = Color(0.16, 0.12, 0.22, 0.85)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.35, 0.4, 0.55, 0.6)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_about_modal"]
-bg_color = Color(0.07, 0.06, 0.11, 0.96)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.65, 0.35, 0.95, 0.9)
-corner_radius_top_left = 12
-corner_radius_top_right = 12
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 12
-shadow_size = 18
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_close_btn_h"]
+bg_color = Color(0.7, 0.15, 0.25, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 0.35, 0.45, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
-[node name="MainMenu" type="Control" unique_id=620166841]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_badge"]
+content_margin_left = 10.0
+content_margin_top = 4.0
+content_margin_right = 10.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0.85, 1, 0.1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0.9, 1, 0.4)
+corner_radius_top_left = 4
+corner_radius_bottom_right = 4
+
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -132,16 +177,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_menu")
 
-[node name="BackgroundDark" type="ColorRect" parent="." unique_id=384408439]
+[node name="BackgroundDark" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.04, 0.03, 0.07, 1)
+color = Color(0.02, 0.02, 0.05, 1)
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=803905277]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -151,88 +196,143 @@ grow_vertical = 2
 mouse_filter = 2
 stretch = true
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1940498445]
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport" unique_id=1270961077]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
 environment = SubResource("Env_menu")
 
-[node name="SunLight" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport" unique_id=995866238]
+[node name="SunLight" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(0.819152, -0.40558, 0.40558, 0, 0.707107, 0.707107, -0.573576, -0.579228, 0.579228, 3, 5, 4)
 light_color = Color(1, 0.92, 0.82, 1)
 light_energy = 1.15
 shadow_enabled = true
 
-[node name="RimLight" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport" unique_id=1331215840]
+[node name="RimLight" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport"]
 transform = Transform3D(-0.707107, 0.353553, -0.612372, 0, 0.866025, 0.5, 0.707107, 0.353553, -0.612372, -3, 3, -3)
-light_color = Color(0.15, 0.85, 1, 1)
-light_energy = 0.85
+light_color = Color(0.05, 0.88, 1, 1)
+light_energy = 0.9
 
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport" unique_id=1842795760]
-transform = Transform3D(0.965926, 0.0449435, -0.254887, 0, 0.984808, 0.173648, 0.258819, -0.167731, 0.951251, 0.8, 1.45, 3.8)
-fov = 48.0
+[node name="PedestalLight" type="OmniLight3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 0.75, 0.3)
+light_color = Color(0, 0.94, 1, 1)
+light_energy = 2.8
+omni_range = 4.2
+omni_attenuation = 0.8
 
-[node name="DioramaRoot" type="Node3D" parent="SubViewportContainer/SubViewport" unique_id=1455137046]
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(0.965926, 0.0449435, -0.254887, 0, 0.984808, 0.173648, 0.258819, -0.167731, 0.951251, 0.85, 1.45, 3.75)
+fov = 46.0
 
-[node name="LeftUI" type="Control" parent="." unique_id=933168554]
-layout_mode = 1
-anchors_preset = 9
-anchor_bottom = 1.0
-offset_right = 720.0
-grow_vertical = 2
+[node name="DioramaRoot" type="Node3D" parent="SubViewportContainer/SubViewport"]
 
-[node name="Margin" type="MarginContainer" parent="LeftUI" unique_id=2098743479]
+[node name="BackdropGradient" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 80
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_backdrop")
+
+[node name="TechFrameOverlay" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TelemetryTop" type="Label" parent="TechFrameOverlay"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -460.0
+offset_top = 24.0
+offset_right = -40.0
+offset_bottom = 44.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0.85, 1, 0.5)
+theme_override_font_sizes/font_size = 12
+text = "[ VTM-OS // READY // TELEMETRY: 60 FPS // REGION: SECTOR-01 ]"
+horizontal_alignment = 2
+
+[node name="LeftUI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 720.0
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="LeftUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 90
 theme_override_constants/margin_top = 70
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 60
 
-[node name="VBox" type="VBoxContainer" parent="LeftUI/Margin" unique_id=304300243]
+[node name="VBox" type="VBoxContainer" parent="LeftUI/Margin"]
 layout_mode = 2
-theme_override_constants/separation = 28
+theme_override_constants/separation = 26
 
-[node name="HeaderBox" type="VBoxContainer" parent="LeftUI/Margin/VBox" unique_id=1229573268]
+[node name="HeaderBox" type="VBoxContainer" parent="LeftUI/Margin/VBox"]
 layout_mode = 2
-theme_override_constants/separation = 4
+theme_override_constants/separation = 6
 
-[node name="TitleLabel" type="Label" parent="LeftUI/Margin/VBox/HeaderBox" unique_id=519113176]
+[node name="Badge" type="Label" parent="LeftUI/Margin/VBox/HeaderBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.78, 0.28, 1)
-theme_override_colors/font_shadow_color = Color(0.9, 0.3, 0, 0.6)
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0.94, 1, 1)
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxFlat_badge")
+text = "◈ PROTOCOL // PLANETARY DISPATCH"
+
+[node name="TitleLabel" type="Label" parent="LeftUI/Margin/VBox/HeaderBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.82, 0.32, 1)
+theme_override_colors/font_shadow_color = Color(0.9, 0.25, 0, 0.6)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 3
 theme_override_constants/shadow_outline_size = 8
-theme_override_font_sizes/font_size = 56
+theme_override_font_sizes/font_size = 54
 text = "VOID THE MATTER"
 
-[node name="SubTitleLabel" type="Label" parent="LeftUI/Margin/VBox/HeaderBox" unique_id=944027877]
+[node name="SubTitleLabel" type="Label" parent="LeftUI/Margin/VBox/HeaderBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0, 0.9, 1, 1)
-theme_override_font_sizes/font_size = 18
-text = "3D ACTION ROGUELITE // PLANETARY PROTOCOL"
+theme_override_colors/font_color = Color(0, 0.92, 1, 0.9)
+theme_override_font_sizes/font_size = 16
+text = "3D SCI-FI ROGUELITE // PLANETARY PROTOCOL"
 
-[node name="ButtonSpacer" type="Control" parent="LeftUI/Margin/VBox" unique_id=2123521000]
-custom_minimum_size = Vector2(0, 36)
+[node name="Divider" type="ColorRect" parent="LeftUI/Margin/VBox/HeaderBox"]
+custom_minimum_size = Vector2(360, 2)
+layout_mode = 2
+size_flags_horizontal = 0
+color = Color(0, 0.85, 1, 0.4)
+
+[node name="ButtonSpacer" type="Control" parent="LeftUI/Margin/VBox"]
+custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 
-[node name="ButtonsVBox" type="VBoxContainer" parent="LeftUI/Margin/VBox" unique_id=2059341906]
+[node name="ButtonsVBox" type="VBoxContainer" parent="LeftUI/Margin/VBox"]
 layout_mode = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 14
 
-[node name="PlayButton" type="Button" parent="LeftUI/Margin/VBox/ButtonsVBox" unique_id=2081571729]
-custom_minimum_size = Vector2(340, 56)
+[node name="PlayButton" type="Button" parent="LeftUI/Margin/VBox/ButtonsVBox"]
+custom_minimum_size = Vector2(360, 56)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.95, 0.95, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 0.85, 0.3, 1)
+theme_override_colors/font_hover_color = Color(1, 0.88, 0.35, 1)
 theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_p")
@@ -240,12 +340,12 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_btn_h")
 text = "▶  ИГРАТЬ"
 alignment = 0
 
-[node name="SettingsButton" type="Button" parent="LeftUI/Margin/VBox/ButtonsVBox" unique_id=259149920]
-custom_minimum_size = Vector2(340, 56)
+[node name="SettingsButton" type="Button" parent="LeftUI/Margin/VBox/ButtonsVBox"]
+custom_minimum_size = Vector2(360, 56)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.95, 0.95, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 0.85, 0.3, 1)
+theme_override_colors/font_hover_color = Color(1, 0.88, 0.35, 1)
 theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_p")
@@ -253,25 +353,25 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_btn_h")
 text = "⚙  НАСТРОЙКИ"
 alignment = 0
 
-[node name="AboutButton" type="Button" parent="LeftUI/Margin/VBox/ButtonsVBox" unique_id=1138514383]
-custom_minimum_size = Vector2(340, 56)
+[node name="AboutButton" type="Button" parent="LeftUI/Margin/VBox/ButtonsVBox"]
+custom_minimum_size = Vector2(360, 56)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.95, 0.95, 1, 1)
-theme_override_colors/font_hover_color = Color(1, 0.85, 0.3, 1)
+theme_override_colors/font_hover_color = Color(1, 0.88, 0.35, 1)
 theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_p")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_h")
-text = "ℹ  ОБ ИГРЕ И ПРЕДМЕТАХ"
+text = "◈  КОДЕКС // ПРЕДМЕТЫ"
 alignment = 0
 
-[node name="QuitButton" type="Button" parent="LeftUI/Margin/VBox/ButtonsVBox" unique_id=792811659]
-custom_minimum_size = Vector2(340, 56)
+[node name="QuitButton" type="Button" parent="LeftUI/Margin/VBox/ButtonsVBox"]
+custom_minimum_size = Vector2(360, 56)
 layout_mode = 2
 size_flags_horizontal = 0
-theme_override_colors/font_color = Color(0.85, 0.55, 0.55, 1)
-theme_override_colors/font_hover_color = Color(1, 0.4, 0.4, 1)
+theme_override_colors/font_color = Color(0.85, 0.6, 0.65, 1)
+theme_override_colors/font_hover_color = Color(1, 0.45, 0.45, 1)
 theme_override_font_sizes/font_size = 22
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_btn_p")
@@ -279,17 +379,27 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_btn_h")
 text = "✕  ВЫХОД"
 alignment = 0
 
-[node name="BottomSpacer" type="Control" parent="LeftUI/Margin/VBox" unique_id=458045389]
+[node name="BottomSpacer" type="Control" parent="LeftUI/Margin/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VersionLabel" type="Label" parent="LeftUI/Margin/VBox" unique_id=1517288447]
+[node name="VersionLabel" type="Label" parent="LeftUI/Margin/VBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.4, 0.45, 0.6, 1)
-theme_override_font_sizes/font_size = 14
-text = "v0.4.5 RELEASE CANDIDATE // GODOT 4.7 // RISK OF VOID CORE"
+theme_override_colors/font_color = Color(0.42, 0.48, 0.62, 1)
+theme_override_font_sizes/font_size = 13
+text = "v0.4.5 RELEASE CANDIDATE // GODOT 4.7 // VOID ENGINE"
 
-[node name="LobbyModal" type="PanelContainer" parent="." unique_id=405642846]
+[node name="ModalBackdrop" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.02, 0.05, 0.65)
+
+[node name="LobbyModal" type="PanelContainer" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -297,227 +407,232 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -440.0
+offset_left = -450.0
 offset_top = -290.0
-offset_right = 440.0
+offset_right = 450.0
 offset_bottom = 290.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_modal")
+theme_override_styles/panel = SubResource("StyleBoxFlat_glass_modal")
 
-[node name="Margin" type="MarginContainer" parent="LobbyModal" unique_id=874235251]
+[node name="Margin" type="MarginContainer" parent="LobbyModal"]
 layout_mode = 2
-theme_override_constants/margin_left = 28
+theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 28
+theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 24
 
-[node name="VBox" type="VBoxContainer" parent="LobbyModal/Margin" unique_id=1121959983]
+[node name="VBox" type="VBoxContainer" parent="LobbyModal/Margin"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="LobbyHeader" type="HBoxContainer" parent="LobbyModal/Margin/VBox" unique_id=2072613540]
+[node name="LobbyHeader" type="HBoxContainer" parent="LobbyModal/Margin/VBox"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="LobbyModal/Margin/VBox/LobbyHeader" unique_id=175081974]
+[node name="Title" type="Label" parent="LobbyModal/Margin/VBox/LobbyHeader"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_colors/font_color = Color(0, 0.9, 1, 1)
-theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0, 0.94, 1, 1)
+theme_override_font_sizes/font_size = 22
 text = "СИСТЕМА ЛОББИ // ВЫСАДКА"
 
-[node name="CloseLobbyBtn" type="Button" parent="LobbyModal/Margin/VBox/LobbyHeader" unique_id=47795617]
+[node name="CloseLobbyBtn" type="Button" parent="LobbyModal/Margin/VBox/LobbyHeader"]
 custom_minimum_size = Vector2(36, 36)
 layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_colors/font_hover_color = Color(1, 0.35, 0.45, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_close_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_close_btn_h")
 text = "✕"
 
-[node name="SelectionView" type="VBoxContainer" parent="LobbyModal/Margin/VBox" unique_id=1984197898]
+[node name="SelectionView" type="VBoxContainer" parent="LobbyModal/Margin/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="SplitGrid" type="HBoxContainer" parent="LobbyModal/Margin/VBox/SelectionView" unique_id=491101346]
+[node name="SplitGrid" type="HBoxContainer" parent="LobbyModal/Margin/VBox/SelectionView"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 20
 
-[node name="CreateCard" type="PanelContainer" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid" unique_id=120503872]
+[node name="CreateCard" type="PanelContainer" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_card")
 
-[node name="VBox" type="VBoxContainer" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/CreateCard" unique_id=240801159]
+[node name="VBox" type="VBoxContainer" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/CreateCard"]
 layout_mode = 2
 theme_override_constants/separation = 14
 
-[node name="Label" type="Label" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/CreateCard/VBox" unique_id=120073731]
+[node name="Label" type="Label" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/CreateCard/VBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.8, 0.3, 1)
 theme_override_font_sizes/font_size = 18
 text = "СОЗДАТЬ ЛОББИ"
 
-[node name="Desc" type="Label" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/CreateCard/VBox" unique_id=1316907876]
+[node name="Desc" type="Label" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/CreateCard/VBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.65, 0.7, 0.85, 1)
 theme_override_font_sizes/font_size = 13
 text = "Станьте хостом экспедиции. Приглашайте друзей по коду или откройте лобби для всех игроков."
 autowrap_mode = 2
 
-[node name="Spacer" type="Control" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/CreateCard/VBox" unique_id=1858923803]
+[node name="Spacer" type="Control" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/CreateCard/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CreatePublicBtn" type="Button" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/CreateCard/VBox" unique_id=1491202926]
+[node name="CreatePublicBtn" type="Button" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/CreateCard/VBox"]
 custom_minimum_size = Vector2(0, 46)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_h")
 text = "🌐  Создать Публичное Лобби"
 
-[node name="CreatePrivateBtn" type="Button" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/CreateCard/VBox" unique_id=797608238]
+[node name="CreatePrivateBtn" type="Button" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/CreateCard/VBox"]
 custom_minimum_size = Vector2(0, 46)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_h")
 text = "🔒  Создать Приватное (По коду)"
 
-[node name="JoinCard" type="PanelContainer" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid" unique_id=979038318]
+[node name="JoinCard" type="PanelContainer" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_card")
 
-[node name="VBox" type="VBoxContainer" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/JoinCard" unique_id=2008090621]
+[node name="VBox" type="VBoxContainer" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/JoinCard"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label" type="Label" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/JoinCard/VBox" unique_id=1663800514]
+[node name="Label" type="Label" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/JoinCard/VBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.2, 0.9, 1, 1)
 theme_override_font_sizes/font_size = 18
 text = "ВОЙТИ В ЛОББИ"
 
-[node name="CodeHBox" type="HBoxContainer" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/JoinCard/VBox" unique_id=2059791780]
+[node name="CodeHBox" type="HBoxContainer" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/JoinCard/VBox"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="CodeInput" type="LineEdit" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/JoinCard/VBox/CodeHBox" unique_id=852512603]
+[node name="CodeInput" type="LineEdit" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/JoinCard/VBox/CodeHBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Код (напр. VTM-84K)"
 
-[node name="JoinCodeBtn" type="Button" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/JoinCard/VBox/CodeHBox" unique_id=1478270891]
+[node name="JoinCodeBtn" type="Button" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/JoinCard/VBox/CodeHBox"]
 custom_minimum_size = Vector2(100, 38)
 layout_mode = 2
 text = "Войти"
 
-[node name="ListLabel" type="Label" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/JoinCard/VBox" unique_id=1817644287]
+[node name="ListLabel" type="Label" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/JoinCard/VBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.7, 0.75, 0.9, 1)
 theme_override_font_sizes/font_size = 13
 text = "Список открытых серверов:"
 
-[node name="PublicScroll" type="ScrollContainer" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/JoinCard/VBox" unique_id=1872408825]
+[node name="PublicScroll" type="ScrollContainer" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/JoinCard/VBox"]
 custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="LobbyListVBox" type="VBoxContainer" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/JoinCard/VBox/PublicScroll" unique_id=1190329684]
+[node name="LobbyListVBox" type="VBoxContainer" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/JoinCard/VBox/PublicScroll"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 6
 
-[node name="ListActions" type="HBoxContainer" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/JoinCard/VBox" unique_id=482740820]
+[node name="ListActions" type="HBoxContainer" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/JoinCard/VBox"]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="RefreshListBtn" type="Button" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/JoinCard/VBox/ListActions" unique_id=793067538]
+[node name="RefreshListBtn" type="Button" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/JoinCard/VBox/ListActions"]
 layout_mode = 2
 text = "🔄 Обновить"
 
-[node name="JoinSelectedBtn" type="Button" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/JoinCard/VBox/ListActions" unique_id=56858990]
+[node name="JoinSelectedBtn" type="Button" parent="LobbyModal/Margin/VBox/SelectionView/SplitGrid/JoinCard/VBox/ListActions"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Войти в выбранное"
 
-[node name="RoomView" type="VBoxContainer" parent="LobbyModal/Margin/VBox" unique_id=1113099729]
+[node name="RoomView" type="VBoxContainer" parent="LobbyModal/Margin/VBox"]
 visible = false
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="RoomInfoCard" type="PanelContainer" parent="LobbyModal/Margin/VBox/RoomView" unique_id=103960119]
+[node name="RoomInfoCard" type="PanelContainer" parent="LobbyModal/Margin/VBox/RoomView"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_card")
 
-[node name="HBox" type="HBoxContainer" parent="LobbyModal/Margin/VBox/RoomView/RoomInfoCard" unique_id=351691113]
+[node name="HBox" type="HBoxContainer" parent="LobbyModal/Margin/VBox/RoomView/RoomInfoCard"]
 layout_mode = 2
 theme_override_constants/separation = 18
 
-[node name="VBox" type="VBoxContainer" parent="LobbyModal/Margin/VBox/RoomView/RoomInfoCard/HBox" unique_id=1907180841]
+[node name="VBox" type="VBoxContainer" parent="LobbyModal/Margin/VBox/RoomView/RoomInfoCard/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="RoomNameLabel" type="Label" parent="LobbyModal/Margin/VBox/RoomView/RoomInfoCard/HBox/VBox" unique_id=1318251345]
+[node name="RoomNameLabel" type="Label" parent="LobbyModal/Margin/VBox/RoomView/RoomInfoCard/HBox/VBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.8, 0.25, 1)
 theme_override_font_sizes/font_size = 20
 text = "КОМНАТА ОЖИДАНИЯ: VTM-84K [ПРИВАТНОЕ]"
 
-[node name="MapLabel" type="Label" parent="LobbyModal/Margin/VBox/RoomView/RoomInfoCard/HBox/VBox" unique_id=2065128546]
+[node name="MapLabel" type="Label" parent="LobbyModal/Margin/VBox/RoomView/RoomInfoCard/HBox/VBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0, 0.9, 1, 1)
 theme_override_font_sizes/font_size = 14
 text = "Локация: Угасающее Плато (Первая зона)"
 
-[node name="CopyCodeBtn" type="Button" parent="LobbyModal/Margin/VBox/RoomView/RoomInfoCard/HBox" unique_id=49063851]
+[node name="CopyCodeBtn" type="Button" parent="LobbyModal/Margin/VBox/RoomView/RoomInfoCard/HBox"]
 custom_minimum_size = Vector2(160, 42)
 layout_mode = 2
 size_flags_vertical = 4
 text = "📋 Скопировать код"
 
-[node name="SlotsCard" type="PanelContainer" parent="LobbyModal/Margin/VBox/RoomView" unique_id=28251206]
+[node name="SlotsCard" type="PanelContainer" parent="LobbyModal/Margin/VBox/RoomView"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_card")
 
-[node name="SlotsVBox" type="VBoxContainer" parent="LobbyModal/Margin/VBox/RoomView/SlotsCard" unique_id=814364247]
+[node name="SlotsVBox" type="VBoxContainer" parent="LobbyModal/Margin/VBox/RoomView/SlotsCard"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Slot1" type="Label" parent="LobbyModal/Margin/VBox/RoomView/SlotsCard/SlotsVBox" unique_id=346412618]
+[node name="Slot1" type="Label" parent="LobbyModal/Margin/VBox/RoomView/SlotsCard/SlotsVBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.3, 1, 0.5, 1)
 theme_override_font_sizes/font_size = 16
 text = "• Слот 1: Хост — Commando_01 [ГОТОВ К ВЫСАДКЕ]"
 
-[node name="Slot2" type="Label" parent="LobbyModal/Margin/VBox/RoomView/SlotsCard/SlotsVBox" unique_id=1374265671]
+[node name="Slot2" type="Label" parent="LobbyModal/Margin/VBox/RoomView/SlotsCard/SlotsVBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.5, 0.6, 0.75, 1)
 theme_override_font_sizes/font_size = 15
 text = "• Слот 2: [Ожидание подключения десантника...]"
 
-[node name="Slot3" type="Label" parent="LobbyModal/Margin/VBox/RoomView/SlotsCard/SlotsVBox" unique_id=195194882]
+[node name="Slot3" type="Label" parent="LobbyModal/Margin/VBox/RoomView/SlotsCard/SlotsVBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.5, 0.6, 0.75, 1)
 theme_override_font_sizes/font_size = 15
 text = "• Слот 3: [Ожидание подключения десантника...]"
 
-[node name="Slot4" type="Label" parent="LobbyModal/Margin/VBox/RoomView/SlotsCard/SlotsVBox" unique_id=1817512630]
+[node name="Slot4" type="Label" parent="LobbyModal/Margin/VBox/RoomView/SlotsCard/SlotsVBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.5, 0.6, 0.75, 1)
 theme_override_font_sizes/font_size = 15
 text = "• Слот 4: [Ожидание подключения десантника...]"
 
-[node name="RoomActions" type="HBoxContainer" parent="LobbyModal/Margin/VBox/RoomView" unique_id=1460331982]
+[node name="RoomActions" type="HBoxContainer" parent="LobbyModal/Margin/VBox/RoomView"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="LeaveRoomBtn" type="Button" parent="LobbyModal/Margin/VBox/RoomView/RoomActions" unique_id=1613228798]
+[node name="LeaveRoomBtn" type="Button" parent="LobbyModal/Margin/VBox/RoomView/RoomActions"]
 custom_minimum_size = Vector2(160, 48)
 layout_mode = 2
 text = "Назад к выбору"
 
-[node name="StartDropBtn" type="Button" parent="LobbyModal/Margin/VBox/RoomView/RoomActions" unique_id=841521759]
+[node name="StartDropBtn" type="Button" parent="LobbyModal/Margin/VBox/RoomView/RoomActions"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -527,7 +642,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_h")
 text = "🚀  НАЧАТЬ ВЫСАДКУ"
 
-[node name="SettingsModal" type="PanelContainer" parent="." unique_id=1916886331]
+[node name="SettingsModal" type="PanelContainer" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -535,146 +650,159 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -330.0
-offset_top = -260.0
-offset_right = 330.0
-offset_bottom = 260.0
+offset_left = -360.0
+offset_top = -280.0
+offset_right = 360.0
+offset_bottom = 280.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_settings_modal")
+theme_override_styles/panel = SubResource("StyleBoxFlat_glass_modal_amber")
 
-[node name="Margin" type="MarginContainer" parent="SettingsModal" unique_id=474704918]
+[node name="Margin" type="MarginContainer" parent="SettingsModal"]
 layout_mode = 2
-theme_override_constants/margin_left = 28
+theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 28
+theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 24
 
-[node name="VBox" type="VBoxContainer" parent="SettingsModal/Margin" unique_id=416464216]
+[node name="VBox" type="VBoxContainer" parent="SettingsModal/Margin"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Title" type="Label" parent="SettingsModal/Margin/VBox" unique_id=841266904]
+[node name="SettingsHeader" type="HBoxContainer" parent="SettingsModal/Margin/VBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.75, 0.25, 1)
-theme_override_font_sizes/font_size = 24
-text = "НАСТРОЙКИ СИСТЕМЫ"
-horizontal_alignment = 1
 
-[node name="AudioCard" type="PanelContainer" parent="SettingsModal/Margin/VBox" unique_id=1096932570]
+[node name="Title" type="Label" parent="SettingsModal/Margin/VBox/SettingsHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.8, 0.28, 1)
+theme_override_font_sizes/font_size = 22
+text = "НАСТРОЙКИ СИСТЕМЫ"
+
+[node name="CloseSettingsBtn" type="Button" parent="SettingsModal/Margin/VBox/SettingsHeader"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_colors/font_hover_color = Color(1, 0.35, 0.45, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_close_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_close_btn_h")
+text = "✕"
+
+[node name="AudioCard" type="PanelContainer" parent="SettingsModal/Margin/VBox"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_card")
 
-[node name="VBox" type="VBoxContainer" parent="SettingsModal/Margin/VBox/AudioCard" unique_id=1072932336]
+[node name="VBox" type="VBoxContainer" parent="SettingsModal/Margin/VBox/AudioCard"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="MasterBox" type="HBoxContainer" parent="SettingsModal/Margin/VBox/AudioCard/VBox" unique_id=1954823834]
+[node name="MasterBox" type="HBoxContainer" parent="SettingsModal/Margin/VBox/AudioCard/VBox"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Label" type="Label" parent="SettingsModal/Margin/VBox/AudioCard/VBox/MasterBox" unique_id=369021997]
-custom_minimum_size = Vector2(140, 0)
+[node name="Label" type="Label" parent="SettingsModal/Margin/VBox/AudioCard/VBox/MasterBox"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "Громкость Мастер:"
 
-[node name="MasterSlider" type="HSlider" parent="SettingsModal/Margin/VBox/AudioCard/VBox/MasterBox" unique_id=2074250707]
+[node name="MasterSlider" type="HSlider" parent="SettingsModal/Margin/VBox/AudioCard/VBox/MasterBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 value = 100.0
 
-[node name="MasterVal" type="Label" parent="SettingsModal/Margin/VBox/AudioCard/VBox/MasterBox" unique_id=1425267273]
+[node name="MasterVal" type="Label" parent="SettingsModal/Margin/VBox/AudioCard/VBox/MasterBox"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "100%"
 horizontal_alignment = 2
 
-[node name="MusicBox" type="HBoxContainer" parent="SettingsModal/Margin/VBox/AudioCard/VBox" unique_id=1894789756]
+[node name="MusicBox" type="HBoxContainer" parent="SettingsModal/Margin/VBox/AudioCard/VBox"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Label" type="Label" parent="SettingsModal/Margin/VBox/AudioCard/VBox/MusicBox" unique_id=688478862]
-custom_minimum_size = Vector2(140, 0)
+[node name="Label" type="Label" parent="SettingsModal/Margin/VBox/AudioCard/VBox/MusicBox"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "Громкость Музыки:"
 
-[node name="MusicSlider" type="HSlider" parent="SettingsModal/Margin/VBox/AudioCard/VBox/MusicBox" unique_id=1968192392]
+[node name="MusicSlider" type="HSlider" parent="SettingsModal/Margin/VBox/AudioCard/VBox/MusicBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 value = 85.0
 
-[node name="MusicVal" type="Label" parent="SettingsModal/Margin/VBox/AudioCard/VBox/MusicBox" unique_id=1197194180]
+[node name="MusicVal" type="Label" parent="SettingsModal/Margin/VBox/AudioCard/VBox/MusicBox"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "85%"
 horizontal_alignment = 2
 
-[node name="SfxBox" type="HBoxContainer" parent="SettingsModal/Margin/VBox/AudioCard/VBox" unique_id=994195673]
+[node name="SfxBox" type="HBoxContainer" parent="SettingsModal/Margin/VBox/AudioCard/VBox"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Label" type="Label" parent="SettingsModal/Margin/VBox/AudioCard/VBox/SfxBox" unique_id=707279179]
-custom_minimum_size = Vector2(140, 0)
+[node name="Label" type="Label" parent="SettingsModal/Margin/VBox/AudioCard/VBox/SfxBox"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "Громкость Звуков:"
 
-[node name="SfxSlider" type="HSlider" parent="SettingsModal/Margin/VBox/AudioCard/VBox/SfxBox" unique_id=1349115816]
+[node name="SfxSlider" type="HSlider" parent="SettingsModal/Margin/VBox/AudioCard/VBox/SfxBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 value = 100.0
 
-[node name="SfxVal" type="Label" parent="SettingsModal/Margin/VBox/AudioCard/VBox/SfxBox" unique_id=1585956238]
+[node name="SfxVal" type="Label" parent="SettingsModal/Margin/VBox/AudioCard/VBox/SfxBox"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "100%"
 horizontal_alignment = 2
 
-[node name="VideoCard" type="PanelContainer" parent="SettingsModal/Margin/VBox" unique_id=1834884831]
+[node name="VideoCard" type="PanelContainer" parent="SettingsModal/Margin/VBox"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_card")
 
-[node name="VBox" type="VBoxContainer" parent="SettingsModal/Margin/VBox/VideoCard" unique_id=861711422]
+[node name="VBox" type="VBoxContainer" parent="SettingsModal/Margin/VBox/VideoCard"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="ResBox" type="HBoxContainer" parent="SettingsModal/Margin/VBox/VideoCard/VBox" unique_id=788487829]
+[node name="ResBox" type="HBoxContainer" parent="SettingsModal/Margin/VBox/VideoCard/VBox"]
 layout_mode = 2
 theme_override_constants/separation = 12
 
-[node name="Label" type="Label" parent="SettingsModal/Margin/VBox/VideoCard/VBox/ResBox" unique_id=2137657159]
-custom_minimum_size = Vector2(140, 0)
+[node name="Label" type="Label" parent="SettingsModal/Margin/VBox/VideoCard/VBox/ResBox"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "Разрешение экрана:"
 
-[node name="ResOptionBtn" type="OptionButton" parent="SettingsModal/Margin/VBox/VideoCard/VBox/ResBox" unique_id=1424018189]
+[node name="ResOptionBtn" type="OptionButton" parent="SettingsModal/Margin/VBox/VideoCard/VBox/ResBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="FullscreenCheck" type="CheckBox" parent="SettingsModal/Margin/VBox/VideoCard/VBox" unique_id=2055965816]
+[node name="FullscreenCheck" type="CheckBox" parent="SettingsModal/Margin/VBox/VideoCard/VBox"]
 layout_mode = 2
 text = "Полноэкранный режим (Fullscreen)"
 
-[node name="SettingsActions" type="HBoxContainer" parent="SettingsModal/Margin/VBox" unique_id=1252989403]
+[node name="SettingsActions" type="HBoxContainer" parent="SettingsModal/Margin/VBox"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="ApplySettingsBtn" type="Button" parent="SettingsModal/Margin/VBox/SettingsActions" unique_id=401350530]
-custom_minimum_size = Vector2(0, 44)
+[node name="ApplySettingsBtn" type="Button" parent="SettingsModal/Margin/VBox/SettingsActions"]
+custom_minimum_size = Vector2(0, 46)
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_btn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_btn_h")
 text = "💾  ПРИМЕНИТЬ И СОХРАНИТЬ"
 
-[node name="BackSettingsBtn" type="Button" parent="SettingsModal/Margin/VBox/SettingsActions" unique_id=162502381]
-custom_minimum_size = Vector2(140, 44)
+[node name="BackSettingsBtn" type="Button" parent="SettingsModal/Margin/VBox/SettingsActions"]
+custom_minimum_size = Vector2(140, 46)
 layout_mode = 2
 text = "НАЗАД"
 
-[node name="AboutModal" type="PanelContainer" parent="." unique_id=637127941]
+[node name="AboutModal" type="PanelContainer" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -682,63 +810,127 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -340.0
-offset_top = -280.0
-offset_right = 340.0
-offset_bottom = 280.0
+offset_left = -400.0
+offset_top = -290.0
+offset_right = 400.0
+offset_bottom = 290.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_about_modal")
+theme_override_styles/panel = SubResource("StyleBoxFlat_glass_modal_purple")
 
-[node name="Margin" type="MarginContainer" parent="AboutModal" unique_id=1690982331]
+[node name="Margin" type="MarginContainer" parent="AboutModal"]
 layout_mode = 2
-theme_override_constants/margin_left = 28
+theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 28
+theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 24
 
-[node name="VBox" type="VBoxContainer" parent="AboutModal/Margin" unique_id=100726550]
+[node name="VBox" type="VBoxContainer" parent="AboutModal/Margin"]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="Title" type="Label" parent="AboutModal/Margin/VBox" unique_id=1543437096]
+[node name="AboutHeader" type="HBoxContainer" parent="AboutModal/Margin/VBox"]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.75, 0.45, 1, 1)
-theme_override_font_sizes/font_size = 24
-text = "ОБ ИГРЕ И ПРЕДМЕТАХ // РУКОВОДСТВО"
-horizontal_alignment = 1
 
-[node name="Scroll" type="ScrollContainer" parent="AboutModal/Margin/VBox" unique_id=133648740]
+[node name="Title" type="Label" parent="AboutModal/Margin/VBox/AboutHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.8, 0.5, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "КОДЕКС // ПРЕДМЕТЫ И РУКОВОДСТВО"
+
+[node name="CloseAboutBtn" type="Button" parent="AboutModal/Margin/VBox/AboutHeader"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.9, 0.9, 0.95, 1)
+theme_override_colors/font_hover_color = Color(1, 0.35, 0.45, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_close_btn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_close_btn_h")
+text = "✕"
+
+[node name="Scroll" type="ScrollContainer" parent="AboutModal/Margin/VBox"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="GuideLabel" type="Label" parent="AboutModal/Margin/VBox/Scroll" unique_id=361864419]
+[node name="GuideVBox" type="VBoxContainer" parent="AboutModal/Margin/VBox/Scroll"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "• УПРАВЛЕНИЕ ДЕСАНТНИКОМ:
-   WASD — перемещение
-   Мышь — круговой обзор и наведение 360°
-   ЛКМ — парные бластеры (Double Tap)
-   ПКМ — фазовый бронебойный лазер (Phase Round)
-   Shift / C — тактический кувырок (кадры неуязвимости)
-   Пробел — прыжок / двойной прыжок с Пером Хопу
-   E — взаимодействие с Сундуками и Телепортом
+theme_override_constants/separation = 14
 
-• АРТЕФАКТЫ И СИНЕРГИЯ ПРЕДМЕТОВ:
-   - Солдатский Шприц (Syringe): +15% к скорострельности бластеров.
-   - Бензин (Gasoline): поджигает врагов и взрывает область при убийстве.
-   - Укулеле (Ukulele): выпускает цепную молнию по 3 ближайшим целям.
-   - Перо Хопу (Hopoo Feather): дарует дополнительный прыжок в воздухе.
-   - Плюшевый Мишка (Tough Times): 15% шанс полностью заблокировать любой урон.
+[node name="ControlsCard" type="PanelContainer" parent="AboutModal/Margin/VBox/Scroll/GuideVBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
 
-• БОСС ЛОКАЦИИ: КАМЕННЫЙ ТИТАН:
-   - Активируйте Телепорт в глубине острова, чтобы начать зарядку.
-   - Из земли восстанет древний Каменный Титан с лазерным оком.
-   - Прячьтесь за многогранными скалами и руинами древних колонн от лазера.
-   - Подпрыгивайте перед топотом титана, чтобы избежать ударной волны!"
-autowrap_mode = 2
+[node name="VBox" type="VBoxContainer" parent="AboutModal/Margin/VBox/Scroll/GuideVBox/ControlsCard"]
+layout_mode = 2
+theme_override_constants/separation = 6
 
-[node name="BackAboutBtn" type="Button" parent="AboutModal/Margin/VBox" unique_id=767547836]
+[node name="Head" type="Label" parent="AboutModal/Margin/VBox/Scroll/GuideVBox/ControlsCard/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.92, 1, 1)
+theme_override_font_sizes/font_size = 16
+text = "🎮  УПРАВЛЕНИЕ ДЕСАНТНИКОМ"
+
+[node name="Txt" type="Label" parent="AboutModal/Margin/VBox/Scroll/GuideVBox/ControlsCard/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.88, 0.95, 1)
+theme_override_font_sizes/font_size = 13
+text = "WASD — Свободное перемещение в 3D
+Мышь — Полный круговой обзор и прицеливание 360°
+ЛКМ — Парные бластеры десантника (Double Tap)
+ПКМ — Фазовый бронебойный лазер (Phase Round)
+Shift / C — Тактический кувырок (кадры неуязвимости)
+Пробел — Прыжок / Мульти-прыжок (с Пером Хопу)
+E — Активация сундуков, прыжковых панелей и Телепорта"
+
+[node name="ItemsCard" type="PanelContainer" parent="AboutModal/Margin/VBox/Scroll/GuideVBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="VBox" type="VBoxContainer" parent="AboutModal/Margin/VBox/Scroll/GuideVBox/ItemsCard"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Head" type="Label" parent="AboutModal/Margin/VBox/Scroll/GuideVBox/ItemsCard/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8, 0.25, 1)
+theme_override_font_sizes/font_size = 16
+text = "◈  КОДЕКС ПРЕДМЕТОВ И СИНЕРГИЙ"
+
+[node name="Txt" type="Label" parent="AboutModal/Margin/VBox/Scroll/GuideVBox/ItemsCard/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.88, 0.95, 1)
+theme_override_font_sizes/font_size = 13
+text = "• Солдатский Шприц (Common): +15% к скорострельности основного оружия за стак.
+• Плюшевый Мишка (Common): 15% шанс полностью заблокировать любой полученный урон.
+• Бензин (Common): поджигает врагов и взрывает зону при каждом уничтожении противника.
+• Перо Хопу (Uncommon): дарует дополнительный воздушный прыжок за каждый экземпляр.
+• Укулеле (Uncommon): 25% шанс выпустить цепную молнию по 3 дополнительным целям."
+
+[node name="BossCard" type="PanelContainer" parent="AboutModal/Margin/VBox/Scroll/GuideVBox"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_card")
+
+[node name="VBox" type="VBoxContainer" parent="AboutModal/Margin/VBox/Scroll/GuideVBox/BossCard"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Head" type="Label" parent="AboutModal/Margin/VBox/Scroll/GuideVBox/BossCard/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.45, 0.45, 1)
+theme_override_font_sizes/font_size = 16
+text = "☠  БОСС ЭТАПА: КАМЕННЫЙ ТИТАН"
+
+[node name="Txt" type="Label" parent="AboutModal/Margin/VBox/Scroll/GuideVBox/BossCard/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.85, 0.88, 0.95, 1)
+theme_override_font_sizes/font_size = 13
+text = "При запуске зарядки Телепорта пробуждается древний страж.
+Укрывайтесь за монолитами и колоннами от непрерывного лазерного луча из ока титана.
+Подпрыгивайте перед топотом титана, чтобы избежать радиальной ударной волны."
+
+[node name="BackAboutBtn" type="Button" parent="AboutModal/Margin/VBox"]
 custom_minimum_size = Vector2(160, 42)
 layout_mode = 2
 size_flags_horizontal = 4
