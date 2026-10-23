@@ -40,6 +40,9 @@ func _setup_beetle_model() -> void:
 
 
 
+@onready var nav_agent: NavigationAgent3D = get_node_or_null("NavigationAgent3D")
+
+
 func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
@@ -60,15 +63,25 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 		return
 		
-	var dir: Vector3 = (target_player.global_position - global_position)
-	dir.y = 0.0
-	var dist: float = dir.length()
+	var target_pos: Vector3 = target_player.global_position
+	var move_target: Vector3 = target_pos
 	
-	if dist > 2.0:
-		var norm_dir: Vector3 = dir.normalized()
-		velocity.x = norm_dir.x * move_speed
-		velocity.z = norm_dir.z * move_speed
-		look_at(global_position + norm_dir, Vector3.UP)
+	if nav_agent:
+		nav_agent.target_position = target_pos
+		var next_nav_point: Vector3 = nav_agent.get_next_path_position()
+		if not nav_agent.is_target_reached() and next_nav_point != Vector3.ZERO:
+			move_target = next_nav_point
+			
+	var dir: Vector3 = (move_target - global_position)
+	dir.y = 0.0
+	var dist_to_player: float = (target_pos - global_position).length()
+	
+	if dist_to_player > 2.0:
+		if dir.length_squared() > 0.04:
+			var norm_dir: Vector3 = dir.normalized()
+			velocity.x = norm_dir.x * move_speed
+			velocity.z = norm_dir.z * move_speed
+			look_at(global_position + norm_dir, Vector3.UP)
 	else:
 		velocity.x = 0.0
 		velocity.z = 0.0

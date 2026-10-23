@@ -28,6 +28,7 @@ func _ready() -> void:
 	_generate_terrain_mesh()
 	_scatter_props()
 	_align_stage_entities()
+	_bake_navigation_mesh()
 
 
 func _init_noise() -> void:
@@ -377,6 +378,16 @@ func _create_ruined_column(rng: RandomNumberGenerator) -> StaticBody3D:
 		broken.set_surface_override_material(0, mat_rock)
 		sb.add_child(broken)
 		
+		# Коллайдер для упавшего обломка колонны
+		var cs_broken: CollisionShape3D = CollisionShape3D.new()
+		var cyl_b: CylinderShape3D = CylinderShape3D.new()
+		cyl_b.radius = 0.65
+		cyl_b.height = 2.2
+		cs_broken.shape = cyl_b
+		cs_broken.position = Vector3(1.3, 0.65, 0.7)
+		cs_broken.rotation.z = deg_to_rad(85.0)
+		sb.add_child(cs_broken)
+		
 	# Светящаяся руническая вставка
 	var rune: MeshInstance3D = MeshInstance3D.new()
 	var r_mesh: BoxMesh = BoxMesh.new()
@@ -430,13 +441,29 @@ func _create_stone_arch() -> StaticBody3D:
 	lintel.set_surface_override_material(0, mat_rock)
 	sb.add_child(lintel)
 	
-	# Коллизия
-	var cs: CollisionShape3D = CollisionShape3D.new()
-	var shape: BoxShape3D = BoxShape3D.new()
-	shape.size = Vector3(8.5, 8.0, 3.0)
-	cs.position = Vector3(0, 4.0, 0)
-	cs.shape = shape
-	sb.add_child(cs)
+	# Коллизии: Отдельно для левой колонны, правой колонны и верхней балки (проем арки свободен!)
+	var cs_left: CollisionShape3D = CollisionShape3D.new()
+	var cyl_l: CylinderShape3D = CylinderShape3D.new()
+	cyl_l.radius = 1.4
+	cyl_l.height = 7.0
+	cs_left.shape = cyl_l
+	cs_left.position = Vector3(-3.0, 3.5, 0)
+	sb.add_child(cs_left)
+	
+	var cs_right: CollisionShape3D = CollisionShape3D.new()
+	var cyl_r: CylinderShape3D = CylinderShape3D.new()
+	cyl_r.radius = 1.4
+	cyl_r.height = 7.0
+	cs_right.shape = cyl_r
+	cs_right.position = Vector3(3.0, 3.5, 0)
+	sb.add_child(cs_right)
+	
+	var cs_lintel: CollisionShape3D = CollisionShape3D.new()
+	var box_top: BoxShape3D = BoxShape3D.new()
+	box_top.size = Vector3(8.5, 1.4, 2.8)
+	cs_lintel.shape = box_top
+	cs_lintel.position = Vector3(0, 7.2, 0)
+	sb.add_child(cs_lintel)
 	
 	return sb
 
@@ -602,9 +629,12 @@ func _do_align_entities() -> void:
 	var p: Node = get_parent()
 	if not p:
 		return
+	# Если IslandTerrain находится внутри NavigationRegion3D, поднимаемся к корню сцены
+	while p and p.get_parent() and not (p.has_node("Player") or p.has_node("Teleporter")):
+		p = p.get_parent()
 		
 	for child in p.get_children():
-		if child == self:
+		if child == self or child.is_ancestor_of(self):
 			continue
 		if child is Node3D:
 			var n3d: Node3D = child as Node3D
@@ -622,3 +652,25 @@ func _do_align_entities() -> void:
 				n3d.position.y = hy + 0.5
 			elif n3d.name.begins_with("InitialWisp"):
 				n3d.position.y = hy + 4.5
+
+
+func _bake_navigation_mesh() -> void:
+	var nav_region: NavigationRegion3D = null
+	if get_parent() is NavigationRegion3D:
+		nav_region = get_parent() as NavigationRegion3D
+	elif get_parent():
+		nav_region = get_parent().find_child("NavigationRegion3D", true, false) as NavigationRegion3D
+		
+	if not nav_region:
+		return
+		
+	if not nav_region.navigation_mesh:
+		var nm: NavigationMesh = NavigationMesh.new()
+		nm.agent_radius = 0.6
+		nm.agent_height = 1.8
+		nm.agent_max_climb = 0.8
+		nm.agent_max_slope = 45.0
+		nm.geometry_parsed_geometry_type = NavigationMesh.PARSED_GEOMETRY_STATIC_COLLIDERS
+		nav_region.navigation_mesh = nm
+		
+	nav_region.bake_navigation_mesh(false)

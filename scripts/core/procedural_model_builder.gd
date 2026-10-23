@@ -575,13 +575,15 @@ static func build_rock_formation(rng: RandomNumberGenerator, scale_mult: float =
 		mi.set_surface_override_material(0, mat_basalt if i > 0 else mat_moss)
 		sb.add_child(mi)
 		
-	# Коллизия
-	var cs: CollisionShape3D = CollisionShape3D.new()
-	var shape: BoxShape3D = BoxShape3D.new()
-	shape.size = Vector3(4.5 * scale_mult, 4.0 * scale_mult, 4.5 * scale_mult)
-	cs.shape = shape
-	cs.position = Vector3(0, 2.0 * scale_mult, 0)
-	sb.add_child(cs)
+		# Точный коллайдер для каждой фасеты скалы
+		var cs_facet: CollisionShape3D = CollisionShape3D.new()
+		var cyl_shape: CylinderShape3D = CylinderShape3D.new()
+		cyl_shape.radius = cm.bottom_radius * 0.85
+		cyl_shape.height = cm.height
+		cs_facet.shape = cyl_shape
+		cs_facet.position = mi.position
+		cs_facet.rotation = mi.rotation
+		sb.add_child(cs_facet)
 	
 	return sb
 

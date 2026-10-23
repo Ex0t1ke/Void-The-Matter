@@ -1,6 +1,9 @@
 extends SceneTree
 
 func _init() -> void:
+	call_deferred("_test")
+
+func _test() -> void:
 	print("--- TESTING REFACTORED MAIN MENU SCENE ---")
 	var scene_path: String = "res://scenes/ui/main_menu.tscn"
 	assert(FileAccess.file_exists(scene_path), "main_menu.tscn does not exist")
