@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cwisp001ror"]
+
+[ext_resource type="Script" path="res://scripts/enemies/wisp.gd" id="1_wisp"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hit"]
+radius = 0.65
+
+[node name="Wisp" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_wisp")
+move_speed = 6.2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_hit")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(1, 0.5, 0.15, 1)
+light_energy = 2.5
+omni_range = 6.0

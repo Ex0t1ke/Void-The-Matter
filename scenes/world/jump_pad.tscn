@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://cjppd001ror"]
+
+[ext_resource type="Script" path="res://scripts/world/jump_pad.gd" id="1_pad"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_trigger"]
+height = 1.2
+radius = 2.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_base"]
+top_radius = 2.2
+bottom_radius = 2.6
+height = 0.35
+
+[sub_resource type="StandardMaterial3D" id="Mat_Base"]
+albedo_color = Color(0.18, 0.2, 0.26, 1)
+metallic = 0.8
+roughness = 0.3
+
+[sub_resource type="StandardMaterial3D" id="Mat_Glow"]
+albedo_color = Color(0.15, 0.9, 1, 1)
+emission_enabled = true
+emission = Color(0.15, 0.9, 1, 1)
+emission_energy_multiplier = 4.0
+
+[node name="JumpPad" type="Area3D"]
+collision_layer = 8
+collision_mask = 2
+script = ExtResource("1_pad")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+shape = SubResource("CylinderShape3D_trigger")
+
+[node name="PadMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.18, 0)
+mesh = SubResource("CylinderMesh_base")
+surface_material_override/0 = SubResource("Mat_Base")
+
+[node name="RingMesh" type="MeshInstance3D" parent="PadMesh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+mesh = SubResource("CylinderMesh_base")
+surface_material_override/0 = SubResource("Mat_Glow")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+light_color = Color(0.2, 0.9, 1, 1)
+light_energy = 2.0
+omni_range = 6.0

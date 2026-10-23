@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://cchest001ror"]
+
+[ext_resource type="Script" path="res://scripts/world/chest.gd" id="1_chest"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hit"]
+size = Vector3(1.6, 1.1, 1.2)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_interact"]
+radius = 2.6
+
+[node name="Chest" type="StaticBody3D"]
+collision_layer = 9
+collision_mask = 2
+script = ExtResource("1_chest")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("BoxShape3D_hit")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+light_color = Color(1, 0.75, 0.2, 1)
+light_energy = 2.0
+omni_range = 4.0
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+billboard = 1
+font_size = 22
+outline_size = 8
+outline_modulate = Color(0.1, 0.08, 0.14, 1)
+text = "[E] Открыть ($25)"
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("SphereShape3D_interact")

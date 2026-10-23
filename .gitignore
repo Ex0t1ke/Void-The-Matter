@@ -1,0 +1,33 @@
+# Godot 4 specific ignores
+.godot/
+*.translation
+
+# Export / build outputs
+/build/
+/dist/
+*.exe
+*.pck
+*.apk
+*.aab
+*.wasm
+*.zip
+
+# Blender backup and temporary files
+*.blend1
+*.blend2
+*.blend3
+*.blend@
+*.swp
+*~
+
+# Python and tooling cache
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+Desktop.ini

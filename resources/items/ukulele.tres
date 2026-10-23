@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://cukulele001"]
+
+[ext_resource type="Script" path="res://scripts/items/item_data.gd" id="1_item"]
+
+[resource]
+script = ExtResource("1_item")
+id = &"ukulele"
+item_name = "Укулеле"
+description = "25% шанс при попадании выпустить цепную молнию, поражающую 3 врагов вокруг на 80% урона."
+tier = 1
+attack_speed_per_stack = 0.0
+move_speed_per_stack = 0.0
+health_per_stack = 0.0
+crit_chance_per_stack = 0.0
+extra_jumps_per_stack = 0
+block_chance_per_stack = 0.0
+chain_lightning_chance = 0.25
+chain_targets = 3
+bleed_chance_per_stack = 0.0
+explosion_radius = 0.0
+explosion_damage_ratio = 0.0
